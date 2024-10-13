@@ -8,21 +8,23 @@ public class LongestCycle {
         int ans = -1;
            int [][] cycleTracker = new int[edge.length][2] ;
            Arrays.fill(cycleTracker, new int[]{-1,-1});
-           for(int i= 0;i<edge.length ;i++){
+           for(int i = 0; i < edge.length ; i++)
+           {
             int dis = 0;
             int j=i;
-            while (j!=-1) {
+            while (j != -1) {
                 int distFromSourceId = cycleTracker[j][0];
                 int cycleIdentifier = cycleTracker[j][1];
-                if(distFromSourceId ==-1){
-                    cycleTracker[j] = new int[]{dis++,i};
+                
+                if(distFromSourceId == -1){
+                    cycleTracker[j] = new int[]{ dis++, i};
                 }else{
-                    if(cycleIdentifier ==-1){
-                        ans = Math.max(ans,dis-distFromSourceId);
+                    if(cycleIdentifier == i ){
+                        ans = Math.max(ans,dis - distFromSourceId);
                     }
                     break;
                 }
-                j=edge[j];
+                j = edge[j];
             }
            }
            return ans;
@@ -30,8 +32,7 @@ public class LongestCycle {
 
     public static void main(String[] args) {
 
-        int [] arr = {13423};
-        int answer = getlongestCycle(arr);
-        System.out.println(answer);
+        int [] arr = new int[]{3,3,4,2,3};
+        System.out.println(getlongestCycle(arr));
     }
 }
